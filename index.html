@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Modern Calculator</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -11,51 +14,181 @@
 
     <div class="calculator">
 
+        <!-- Header -->
         <div class="calculator-header">
-            <h1>Calculator</h1>
-            <span>⌘</span>
+
+            <div>
+                <h1>Calculator</h1>
+                <p>Keyboard supported</p>
+            </div>
+
+            <button class="keyboard-toggle" id="keyboard-toggle" title="Keyboard shortcuts">
+                ⌨
+            </button>
+
         </div>
+
 
         <!-- Display -->
         <div class="display">
+
             <div id="previous-display"></div>
+
             <div id="current-display">0</div>
+
+            <div class="active-operation" id="active-operation"></div>
+
         </div>
+
 
         <!-- Buttons -->
         <div class="buttons">
 
-            <button class="function" data-action="clear">AC</button>
-            <button class="function" data-action="backspace">⌫</button>
-            <button class="function" data-action="percentage">%</button>
-            <button class="operator" data-operation="÷">÷</button>
+            <button class="function"
+                    data-action="clear"
+                    data-key="Escape">
+                AC
+                <small>Esc</small>
+            </button>
 
-            <button data-number="7">7</button>
-            <button data-number="8">8</button>
-            <button data-number="9">9</button>
-            <button class="operator" data-operation="×">×</button>
+            <button class="function"
+                    data-action="backspace"
+                    data-key="Backspace">
+                ⌫
+                <small>⌫</small>
+            </button>
 
-            <button data-number="4">4</button>
-            <button data-number="5">5</button>
-            <button data-number="6">6</button>
-            <button class="operator" data-operation="−">−</button>
+            <button class="function"
+                    data-action="percentage"
+                    data-key="%">
+                %
+                <small>%</small>
+            </button>
 
-            <button data-number="1">1</button>
-            <button data-number="2">2</button>
-            <button data-number="3">3</button>
-            <button class="operator" data-operation="+">+</button>
+            <button class="operator"
+                    data-operation="÷"
+                    data-key="/">
+                ÷
+                <small>/</small>
+            </button>
 
-            <button class="function" data-action="sign">±</button>
-            <button data-number="0">0</button>
-            <button data-number=".">.</button>
-            <button class="equals" data-action="equals">=</button>
+
+            <button data-number="7" data-key="7">7</button>
+            <button data-number="8" data-key="8">8</button>
+            <button data-number="9" data-key="9">9</button>
+
+            <button class="operator"
+                    data-operation="×"
+                    data-key="*">
+                ×
+                <small>*</small>
+            </button>
+
+
+            <button data-number="4" data-key="4">4</button>
+            <button data-number="5" data-key="5">5</button>
+            <button data-number="6" data-key="6">6</button>
+
+            <button class="operator"
+                    data-operation="−"
+                    data-key="-">
+                −
+                <small>-</small>
+            </button>
+
+
+            <button data-number="1" data-key="1">1</button>
+            <button data-number="2" data-key="2">2</button>
+            <button data-number="3" data-key="3">3</button>
+
+            <button class="operator"
+                    data-operation="+"
+                    data-key="+">
+                +
+                <small>+</small>
+            </button>
+
+
+            <button class="function"
+                    data-action="sign">
+                ±
+            </button>
+
+            <button data-number="0" data-key="0">0</button>
+
+            <button data-number=".">
+                .
+            </button>
+
+            <button class="equals"
+                    data-action="equals"
+                    data-key="Enter">
+                =
+                <small>Enter</small>
+            </button>
 
         </div>
 
+
+        <!-- Keyboard Shortcuts -->
+        <div class="keyboard-panel" id="keyboard-panel">
+
+            <div class="keyboard-title">
+                <span>⌨ Keyboard Shortcuts</span>
+                <span>F1</span>
+            </div>
+
+            <div class="shortcut-grid">
+
+                <div>
+                    <kbd>0-9</kbd>
+                    <span>Numbers</span>
+                </div>
+
+                <div>
+                    <kbd>+ - * /</kbd>
+                    <span>Operators</span>
+                </div>
+
+                <div>
+                    <kbd>Enter</kbd>
+                    <span>Calculate</span>
+                </div>
+
+                <div>
+                    <kbd>Esc</kbd>
+                    <span>Clear</span>
+                </div>
+
+                <div>
+                    <kbd>Backspace</kbd>
+                    <span>Delete</span>
+                </div>
+
+                <div>
+                    <kbd>%</kbd>
+                    <span>Percentage</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- History -->
         <div class="history-title">
-            <span>Calculation History</span>
-            <button id="clear-history">Clear</button>
+
+            <span>
+                <span class="history-icon">↻</span>
+                Calculation History
+            </span>
+
+            <button id="clear-history">
+                Clear
+            </button>
+
         </div>
+
 
         <div id="history" class="history">
             <p>No calculations yet</p>
@@ -63,6 +196,8 @@
 
     </div>
 
+
     <script src="script.js"></script>
+
 </body>
 </html>
