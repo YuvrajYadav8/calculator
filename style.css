@@ -6,56 +6,95 @@
 
 body {
     min-height: 100vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     padding: 20px;
 
-    font-family: "Segoe UI", Arial, sans-serif;
-
-    background:
-        radial-gradient(circle at 20% 20%, #23395d, transparent 35%),
-        radial-gradient(circle at 80% 80%, #38245c, transparent 35%),
-        #080b14;
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
 
     color: white;
+
+    background:
+        radial-gradient(
+            circle at 15% 15%,
+            rgba(50, 90, 160, 0.35),
+            transparent 35%
+        ),
+        radial-gradient(
+            circle at 85% 85%,
+            rgba(120, 60, 180, 0.3),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #060912,
+            #0c1020,
+            #090b15
+        );
 }
 
-/* Calculator */
+
+/* =========================
+   CALCULATOR
+========================= */
 
 .calculator {
-    width: 390px;
-    padding: 22px;
+    width: 410px;
+
+    padding: 23px;
 
     border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 28px;
 
-    background: rgba(18, 23, 38, 0.82);
-    backdrop-filter: blur(20px);
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(27, 33, 53, 0.92),
+            rgba(12, 16, 30, 0.88)
+        );
+
+    backdrop-filter: blur(25px);
 
     box-shadow:
-        0 30px 80px rgba(0, 0, 0, 0.55),
-        inset 0 1px rgba(255, 255, 255, 0.08);
+        0 35px 100px rgba(0, 0, 0, 0.65),
+        0 0 50px rgba(90, 100, 255, 0.08),
+        inset 0 1px rgba(255, 255, 255, 0.1);
 
-    animation: calculatorAppear 0.7s ease;
+    animation: calculatorAppear 0.7s cubic-bezier(.2,.8,.2,1);
 }
 
 @keyframes calculatorAppear {
+
     from {
         opacity: 0;
-        transform: translateY(40px) scale(0.92);
+        transform:
+            translateY(40px)
+            scale(.9);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform:
+            translateY(0)
+            scale(1);
     }
 }
 
-/* Header */
+
+/* =========================
+   HEADER
+========================= */
 
 .calculator-header {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
 
@@ -63,182 +102,462 @@ body {
 }
 
 .calculator-header h1 {
-    font-size: 20px;
-    font-weight: 600;
+    font-size: 21px;
+
+    font-weight: 650;
+
+    letter-spacing: .2px;
 }
 
-.calculator-header span {
-    width: 32px;
-    height: 32px;
+.calculator-header p {
+    margin-top: 3px;
+
+    font-size: 11px;
+
+    color: #68738d;
+
+    letter-spacing: .5px;
+}
+
+.keyboard-toggle {
+    width: 38px;
+    height: 38px;
 
     display: flex;
     justify-content: center;
     align-items: center;
 
-    border-radius: 50%;
+    padding: 0;
 
-    background: rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
 
-    color: #8c9eff;
+    font-size: 18px;
+
+    color: #a9b4ff;
+
+    background: rgba(110, 120, 255, .1);
+
+    border: 1px solid rgba(120, 130, 255, .12);
 }
 
-/* Display */
+.keyboard-toggle:hover {
+    transform: translateY(-2px);
+
+    background: rgba(110, 120, 255, .2);
+}
+
+
+/* =========================
+   DISPLAY
+========================= */
 
 .display {
-    min-height: 130px;
-    padding: 20px;
+    min-height: 140px;
+
+    padding: 22px;
 
     margin-bottom: 18px;
 
     display: flex;
+
     flex-direction: column;
+
     justify-content: flex-end;
+
     align-items: flex-end;
 
-    border-radius: 20px;
+    border-radius: 22px;
 
-    background: rgba(0, 0, 0, 0.28);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(0, 0, 0, .32),
+            rgba(0, 0, 0, .18)
+        );
+
+    border:
+        1px solid rgba(255,255,255,.045);
+
+    box-shadow:
+        inset 0 2px 15px rgba(0,0,0,.2);
 
     overflow: hidden;
 }
 
 #previous-display {
-    min-height: 25px;
+    width: 100%;
 
-    font-size: 15px;
-    color: #8992aa;
+    min-height: 24px;
 
-    margin-bottom: 8px;
+    margin-bottom: 5px;
+
+    text-align: right;
+
+    font-size: 14px;
+
+    color: #747f99;
 }
 
 #current-display {
     width: 100%;
 
-    font-size: 42px;
-    font-weight: 500;
-
     text-align: right;
 
+    font-size: 44px;
+
+    font-weight: 500;
+
+    letter-spacing: -1px;
+
     white-space: nowrap;
+
     overflow: hidden;
+
     text-overflow: ellipsis;
 
-    transition: 0.2s ease;
+    text-shadow:
+        0 0 20px rgba(255,255,255,.05);
 }
 
-/* Buttons */
+.active-operation {
+    min-height: 17px;
+
+    margin-top: 5px;
+
+    font-size: 11px;
+
+    color: #7180ff;
+
+    opacity: 0;
+
+    transition: .25s ease;
+}
+
+.active-operation.show {
+    opacity: 1;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
 
 .buttons {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
     gap: 11px;
 }
 
 button {
-    height: 65px;
+    height: 64px;
 
     border: none;
-    border-radius: 17px;
 
-    font-size: 21px;
-    font-weight: 500;
+    border-radius: 17px;
 
     color: white;
 
-    background: rgba(255, 255, 255, 0.07);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.09),
+            rgba(255,255,255,.045)
+        );
+
+    font-size: 20px;
+
+    font-weight: 500;
 
     cursor: pointer;
 
+    position: relative;
+
+    overflow: hidden;
+
     transition:
-        transform 0.15s ease,
-        background 0.2s ease,
-        box-shadow 0.2s ease;
+        transform .15s ease,
+        background .2s ease,
+        box-shadow .2s ease,
+        border .2s ease;
 
     box-shadow:
-        inset 0 1px rgba(255, 255, 255, 0.06);
+        inset 0 1px rgba(255,255,255,.07);
 }
 
-/* Hover Effect */
+button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 70%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.1),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition: .5s;
+}
+
+button:hover::before {
+    left: 150%;
+}
 
 button:hover {
     transform: translateY(-4px);
 
-    background: rgba(255, 255, 255, 0.15);
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.16),
+            rgba(255,255,255,.08)
+        );
 
     box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.25);
+        0 12px 28px rgba(0,0,0,.25),
+        inset 0 1px rgba(255,255,255,.1);
 }
 
-/* Click Animation */
+button:active,
+button.keyboard-active {
+    transform:
+        scale(.91)
+        translateY(1px);
 
-button:active {
-    transform: scale(0.90) translateY(1px);
+    box-shadow:
+        0 2px 8px rgba(0,0,0,.35);
 }
 
-/* Function Buttons */
+button small {
+    display: none;
+
+    position: absolute;
+
+    right: 8px;
+    bottom: 6px;
+
+    font-size: 8px;
+
+    color: rgba(255,255,255,.3);
+
+    font-weight: 400;
+}
+
+
+/* =========================
+   FUNCTION
+========================= */
 
 button.function {
-    color: #b8c2d9;
+    color: #b9c2d8;
 
-    background: rgba(128, 143, 173, 0.12);
+    background:
+        rgba(120,135,170,.12);
 }
 
 button.function:hover {
-    background: rgba(128, 143, 173, 0.23);
+    background:
+        rgba(120,135,170,.22);
 }
 
-/* Operators */
+
+/* =========================
+   OPERATORS
+========================= */
 
 button.operator {
-    color: #9ca9ff;
+    color: #aab4ff;
 
-    background: rgba(100, 115, 255, 0.14);
+    background:
+        rgba(100,115,255,.13);
 }
 
 button.operator:hover {
-    background: rgba(100, 115, 255, 0.3);
+    background:
+        rgba(100,115,255,.27);
 
     box-shadow:
-        0 8px 25px rgba(100, 115, 255, 0.25);
+        0 10px 28px rgba(90,100,255,.2);
 }
 
-/* Equal */
-
-button.equals {
-    background: linear-gradient(
-        135deg,
-        #6675ff,
-        #8c5cff
-    );
+button.operator.selected {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(102,117,255,.55),
+            rgba(140,92,255,.4)
+        );
 
     box-shadow:
-        0 8px 25px rgba(110, 90, 255, 0.3);
+        0 0 20px rgba(100,110,255,.25);
+}
+
+
+/* =========================
+   EQUAL
+========================= */
+
+button.equals {
+    background:
+        linear-gradient(
+            135deg,
+            #6675ff,
+            #8759ff
+        );
+
+    box-shadow:
+        0 8px 25px rgba(110,90,255,.3);
 }
 
 button.equals:hover {
-    background: linear-gradient(
-        135deg,
-        #7886ff,
-        #9c70ff
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #7b89ff,
+            #9b70ff
+        );
 
     box-shadow:
-        0 12px 30px rgba(110, 90, 255, 0.45);
+        0 14px 35px rgba(110,90,255,.45);
 }
 
-/* History */
+
+/* =========================
+   KEYBOARD PANEL
+========================= */
+
+.keyboard-panel {
+    max-height: 0;
+
+    opacity: 0;
+
+    overflow: hidden;
+
+    margin-top: 0;
+
+    padding: 0;
+
+    border-radius: 15px;
+
+    background:
+        rgba(0,0,0,.15);
+
+    transition:
+        max-height .4s ease,
+        opacity .3s ease,
+        margin .3s ease,
+        padding .3s ease;
+}
+
+.keyboard-panel.show {
+    max-height: 250px;
+
+    opacity: 1;
+
+    margin-top: 15px;
+
+    padding: 14px;
+}
+
+.keyboard-title {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 12px;
+
+    color: #9ba6c0;
+
+    font-size: 12px;
+}
+
+.keyboard-title span:last-child {
+    color: #6675ff;
+}
+
+.shortcut-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 8px;
+}
+
+.shortcut-grid div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    font-size: 10px;
+
+    color: #707b95;
+}
+
+kbd {
+    min-width: 42px;
+
+    padding: 4px 7px;
+
+    text-align: center;
+
+    border-radius: 6px;
+
+    color: #c8d0e4;
+
+    background:
+        rgba(255,255,255,.08);
+
+    border:
+        1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        0 2px 0 rgba(0,0,0,.3);
+
+    font-size: 9px;
+
+    font-family: monospace;
+}
+
+
+/* =========================
+   HISTORY
+========================= */
 
 .history-title {
     display: flex;
+
     justify-content: space-between;
+
     align-items: center;
 
-    margin-top: 25px;
-    margin-bottom: 10px;
+    margin-top: 23px;
 
-    color: #9ca5bb;
+    margin-bottom: 9px;
+
+    color: #8d98b0;
 
     font-size: 13px;
+}
+
+.history-icon {
+    margin-right: 5px;
+
+    color: #7180ff;
 }
 
 #clear-history {
@@ -248,21 +567,24 @@ button.equals:hover {
 
     border-radius: 8px;
 
-    font-size: 12px;
-
-    color: #9ca9ff;
+    color: #8290ff;
 
     background: transparent;
+
+    font-size: 11px;
 }
 
 #clear-history:hover {
-    background: rgba(100, 115, 255, 0.12);
-
     transform: none;
+
+    background:
+        rgba(100,115,255,.12);
+
+    box-shadow: none;
 }
 
 .history {
-    max-height: 100px;
+    max-height: 115px;
 
     overflow-y: auto;
 
@@ -272,64 +594,79 @@ button.equals:hover {
 .history p {
     padding: 8px 0;
 
-    font-size: 13px;
+    color: #59647b;
 
     text-align: right;
 
-    color: #687189;
+    font-size: 12px;
 }
 
 .history-item {
-    padding: 8px 0;
+    padding: 9px 2px;
 
     display: flex;
+
     justify-content: space-between;
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    gap: 10px;
 
-    font-size: 13px;
+    border-bottom:
+        1px solid rgba(255,255,255,.05);
 
-    color: #aeb7cc;
+    color: #9da7bb;
 
-    animation: historyIn 0.3s ease;
+    font-size: 12px;
+
+    animation: historyIn .3s ease;
 }
 
 .history-item strong {
-    color: white;
+    color: #e7eaff;
+
+    white-space: nowrap;
+}
+
+.history-time {
+    display: block;
+
+    margin-top: 2px;
+
+    color: #566078;
+
+    font-size: 9px;
 }
 
 @keyframes historyIn {
+
     from {
         opacity: 0;
-        transform: translateX(15px);
+
+        transform:
+            translateX(15px);
     }
 
     to {
         opacity: 1;
-        transform: translateX(0);
+
+        transform:
+            translateX(0);
     }
 }
 
-/* Scrollbar */
 
-.history::-webkit-scrollbar {
-    width: 4px;
-}
-
-.history::-webkit-scrollbar-thumb {
-    background: #4d5873;
-    border-radius: 10px;
-}
-
-/* Display animation */
+/* =========================
+   DISPLAY ANIMATION
+========================= */
 
 .display-update {
-    animation: displayPop 0.18s ease;
+    animation:
+        displayPop .18s ease;
 }
 
 @keyframes displayPop {
+
     0% {
-        transform: scale(0.96);
+        transform: scale(.96);
     }
 
     100% {
@@ -337,21 +674,102 @@ button.equals:hover {
     }
 }
 
-/* Mobile */
+
+/* =========================
+   ERROR
+========================= */
+
+.error-display {
+    color: #ff6b81 !important;
+
+    animation:
+        errorShake .35s ease;
+}
+
+@keyframes errorShake {
+
+    0%, 100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+}
+
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+.history::-webkit-scrollbar {
+    width: 4px;
+}
+
+.history::-webkit-scrollbar-thumb {
+    background: #454f69;
+
+    border-radius: 10px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width: 450px) {
 
+    body {
+        padding: 10px;
+    }
+
     .calculator {
         width: 100%;
+
         padding: 17px;
-        border-radius: 22px;
+
+        border-radius: 23px;
     }
 
     button {
         height: 60px;
+
+        border-radius: 15px;
     }
 
     #current-display {
         font-size: 36px;
+    }
+
+    .display {
+        min-height: 125px;
+    }
+}
+
+
+/* =========================
+   SMALL SCREEN
+========================= */
+
+@media (max-height: 700px) {
+
+    .calculator {
+        padding: 15px;
+    }
+
+    .display {
+        min-height: 105px;
+    }
+
+    button {
+        height: 54px;
+    }
+
+    .history {
+        max-height: 70px;
     }
 }
